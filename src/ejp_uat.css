@@ -26,6 +26,12 @@
 /*                                                                                        */
 /******************************************************************************************/
 
+.uat-widget a {
+  text-decoration: underline;
+  cursor: pointer;
+  color: #003399;
+}
+
 .uat-widget .ejp-uat-added-terms {
   vertical-align: middle;
   text-align: center;
