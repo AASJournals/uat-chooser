@@ -1,4 +1,4 @@
 *.gif
 *.png
-bundle.js
 combined.js
+uat-chooser.js

@@ -5,9 +5,9 @@ module.exports = {
     entry: path.resolve(__dirname, 'dist', 'combined.js'),
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'bundle.js',
+        filename: 'uat-chooser.js',
         libraryTarget: 'var',
-        library: 'uat'
+        library: 'uat_chooser'
     },
     module: {
         rules: [
