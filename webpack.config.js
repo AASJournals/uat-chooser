@@ -27,9 +27,11 @@ module.exports = {
         ]
     },
     optimization: {
+        // it all breaks for me with '$(...) is null' if I don't do this!
         minimize: false
     },
     plugins: [
+        // prototype.js does some gnarly stuff with `arguments.callee` that mean we need this:
         new RemoveStrictPlugin()
     ]
 };
