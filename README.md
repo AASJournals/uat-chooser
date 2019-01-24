@@ -60,8 +60,8 @@ The main output file created by the `npm run build` command is
 so that if you load it in a webpage it will create a global variable named
 `uat_chooser` that represents the module. That module currently has one API
 entry point, `uat_chooser.default.ejpUatAutocompleterInit(divid)`. This
-function takes the ID of a `<div>` element that will be set up with the UAT
-concept-choosing interface.
+function takes the ID of a `<div class="uat-widget">` element that will be
+set up with the UAT concept-choosing interface.
 
 
 ## Legalities
