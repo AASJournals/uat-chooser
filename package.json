@@ -1,0 +1,34 @@
+{
+    "name": "uat-chooser",
+    "version": "0.1.0",
+    "description": "Choose concepts from the Unified Astronomy Thesaurus",
+    "main": "src/index.js",
+    "scripts": {
+        "concat": "concat -o dist/combined.js vendor/builder.js vendor/effects.js vendor/controls.js src/ejp_uat.js src/index.js",
+        "pack": "webpack",
+        "build": "npm run concat && npm run pack",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/AASJournals/uat-chooser.git"
+    },
+    "keywords": [
+        "astronomy",
+        "science"
+    ],
+    "author": "eJournalPress, Inc.",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/AASJournals/uat-chooser/issues"
+    },
+    "homepage": "https://github.com/AASJournals/uat-chooser#readme",
+    "devDependencies": {
+        "concat": "^1.0.3",
+        "css-loader": "^2.1.0",
+        "remove-strict-webpack-plugin": "^0.1.2",
+        "style-loader": "^0.23.1",
+        "webpack": "^4.29.0",
+        "webpack-cli": "^3.2.1"
+    }
+}

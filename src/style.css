@@ -1,0 +1,953 @@
+span.assign_rev_type_label {
+ font-weight: bold;
+}
+
+/* DDD FIxes */
+
+.files_table td {
+    white-space: nowrap;
+}
+
+.files_table td.tooltip_right {
+    white-space: normal;
+}
+
+.files_table td img {
+    vertical-align: middle;
+    margin-top: 0px !important;
+}
+
+
+table[border="1"], table[border="2"], table[border="3"], table[border="4"],table[border="5"], table.even_odd {
+    border-collapse: collapse;
+    border: 1px solid gray;
+    margin-bottom: 5px;
+}
+
+.folder_table {
+    border-collapse: collapse;
+}
+
+table[border="1"] td, table[border="2"] td, table[border="3"] td, table[border="4"] td,table[border="5"] td,
+table[border="1"] th, table[border="2"] th, table[border="3"] th, table[border="4"] th,table[border="5"] th,
+.even_odd td,
+.even_odd ths,
+.folder_table td,
+.folder_table th,
+td.APLIST,
+.mergeperson_tbl td
+{
+    padding: 4px 7px 4px 7px;
+}
+
+
+table[border="0"]
+{
+    border-style: none;
+}
+
+.even_odd td, .even_odd th {
+    border: 1px solid gray;
+}
+
+div.tabPage {
+    padding-bottom: 5px;
+}
+
+/* alignment fixes */
+/*==================================================================*/
+/* make bare paragraphs flush to left side */
+p {
+    padding-left: 0px;
+}
+
+/* better align radio/checkbox with their respective text */
+input[type="radio"], input[type="checkbox"] {
+    vertical-align: text-bottom;
+}
+
+/* Increasing tabs to full width of page -- use surrounding div to control spacing */
+table.tabPage[width="96%"] {
+    width: 100%;
+
+}
+
+/* align textareas with their labels, especially useful when some inputs are just 'text' and others textarea */
+textarea {
+    vertical-align: middle;
+}
+
+/* better align icons with text */
+img[alt="GOOGLE"] {
+    vertical-align: text-bottom;
+    padding-left: 4px;
+}
+
+.helpicon {
+    vertical-align: middle;
+}
+
+img[width="16"][height="16"] {
+    vertical-align: top;
+}
+
+
+#orcid_prompt_corr_auth_orcid {
+    vertical-align: top;
+}
+
+#corr_auth_native_nm_row > td {
+    padding: 0px;
+}
+
+
+/* fix 'double table' on many bio screen tabs */
+tr.header_row > td:first-child {
+    padding: 0px;
+}
+
+/* add some padding to toolbar popups and space them like the toolbar */
+.tb_search_popup, .tb_results, .tb_results_scroll {
+    right: 10px !important;
+    bottom: 10px !important;
+    padding: 10px !important;
+}
+
+
+.dt_heading_row td {
+    padding-top: 25px;
+    margin: 10px;
+}
+
+/* subtle shadow for toolbar and sticktnotes */
+#toolbar_div, .tb_results, .tb_results_scroll, .tb_search_popup, .stickynote {
+-webkit-box-shadow: 5px 5px 20px -10px;
+-moz-box-shadow: 5px 5px 20px -10px;
+box-shadow: 5px 5px 20px -10px;
+}
+
+
+
+/* change highlighting of wrong/ need attention answers on sub form */
+.tvs_top_left_corner_warning, .tvs_top_right_corner_warning,
+.tvs_bottom_left_corner_warning, .tvs_bottom_right_corner_warning {
+    color: #31708f;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
+}
+
+.tvs_top_left_corner_error, .tvs_top_right_corner_error,
+.tvs_bottom_left_corner_error, .tvs_bottom_right_corner_error {
+    color: #a94442;
+    background-color: #f2dede;
+    border-color: #ebccd1;
+}
+
+.tvs_bottom_left_corner_error, .tvs_bottom_right_corner_error,
+.tvs_bottom_left_corner_warning, .tvs_bottom_right_corner_warning,
+.tvs_bottom_left_corner_default, .tvs_bottom_right_corner_default
+{
+    margin-bottom: 10px;
+}
+
+.tvs_simple_table > tbody > tr > td > table > tbody > tr > td,
+.tvs_simple_table > tbody > tr > td > table > tbody > tr > th {
+    padding: 10px;
+}
+
+
+.tvs_simple_table {
+    border: 0px !important;
+    width: 100%;
+}
+
+
+.tabPage {
+    font-size: inherit !important;
+    font-family: inherit !important;
+}
+
+.tvs_error {
+    font-weight: bold;
+}
+
+.mergeperson_tbl {
+    margin-bottom: 5px;
+}
+
+
+
+/* style top info bar */
+#ms_brief_table {
+    width: 100%;
+    height: 30px;
+    padding: 2px;
+
+    border-spacing: 0px;
+    border-collapse: separate;
+    border-width: 1px;
+
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+
+    box-shadow: 0px 0px 1px #888888;
+    -webkit-box-shadow: 0px 0px 1px #888888;
+    -moz-box-shadow: 0px 0px 1px #888888;
+
+    background: #bbbbbb;
+    background: linear-gradient(top, #f5f5f5, #eeeeee);
+    background: -ms-linear-gradient(top, #f5f5f5, #eeeeee);
+    background: -webkit-linear-gradient(top, #f5f5f5, #eeeeee);
+    background: -moz-linear-gradient(top, #f5f5f5, #eeeeee);
+}
+
+#ms_brief_table th {
+    border: 0px;
+}
+
+#ms_brief_table td {
+
+    border-left: 1px;
+    border-top: 0px;
+    border-bottom: 0px;
+    border-right: 0px;
+}
+
+
+/*----------------------------------------------------- */
+
+
+tr[id^="mstype"] th {
+	font-weight: normal !important;
+}
+
+BODY {
+   COLOR: #000000;
+   background: #ffffff;
+   FONT-FAMILY: 'Open Sans',Verdana,Arial,Helvetica,sans-serif
+}
+TD {
+   FONT-SIZE: 11px;
+   COLOR: #000000;
+   FONT-FAMILY: 'Open Sans',Verdana,Arial,Helvetica,sans-serif
+}
+TR {
+   FONT-SIZE: 11px;
+   COLOR: #000000;
+   FONT-FAMILY: 'Open Sans',Verdana,Arial,Helvetica,sans-serif
+}
+.BODY {
+   FONT-SIZE: 11px; COLOR: #000000;
+   FONT-FAMILY: 'Open Sans',Verdana,Arial,Helvetica,sans-serif
+}
+A {
+   COLOR: #003399;
+}
+A:visited {
+   COLOR: #003399
+}
+A:hover {
+   COLOR: #ff3300;
+}
+A.nav {
+   FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav:visited {
+   FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.nav:hover {
+   FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #333333; TEXT-DECORATION: none
+}
+.navOff {
+   FONT-WEIGHT: bold; FONT-SIZE: 11px; COLOR: #666666; TEXT-DECORATION: none
+}
+TD.naturebg {
+   BACKGROUND-COLOR: #CC0000
+}
+TR.naturebg {
+   BACKGROUND-COLOR: #CC0000
+}
+
+TD.naturebglt {
+   BACKGROUND-COLOR: #d8d9c0
+}
+TD.navlt {
+   BACKGROUND-COLOR: #333333
+}
+TR.navlt {
+   BACKGROUND-COLOR: #333333
+}
+TD.navdk {
+   BACKGROUND-COLOR: #333333
+}
+TR.navdk {
+   BACKGROUND-COLOR: #333333
+}
+TD.navbg {
+   BACKGROUND-COLOR: #999999
+}
+TR.navbg {
+   BACKGROUND-COLOR: #999999
+}
+.openacctbg {
+   BACKGROUND-COLOR: #ffcc33
+}
+.TEXT {
+   COLOR: #000000
+}
+.TTS {
+   FONT-WEIGHT: bold;
+   FONT-FAMILY: 'Open Sans',Verdana,Arial,Helvetica,sans-serif;
+   FONT-SIZE:14px;
+   COLOR: #2b3840;
+}
+.TTS2 {
+   FONT-SIZE: 13px
+}
+.TES {
+   FONT-SIZE: 13px; COLOR: #ff0000
+}
+.TRS {
+   FONT-SIZE: 10px
+}
+.SMALL1 {
+   FONT-SIZE: 10px
+}
+.SMALL2 {
+   FONT-SIZE: 10px
+}
+.SMALL3 {
+   FONT-SIZE: 10px
+}
+.GUTTER1 {
+   FONT-SIZE: 13px; COLOR: #ffcc66
+}
+.REDN {
+   FONT-WEIGHT: normal; FONT-SIZE: 10px; color:#FF3300;
+}
+.JLBBL {
+   FONT-SIZE: 9px; COLOR: #f7efce; BACKGROUND-COLOR: #530d21
+}
+.JLB1 {
+   FONT-SIZE: 18pt; COLOR: #530d21; BACKGROUND-COLOR: #f7efce
+}
+.MBC2 {
+   FONT-SIZE: 9px; COLOR: #ffffff; BACKGROUND-COLOR: #004080
+}
+.WH {
+   FONT-SIZE: 9px; COLOR: #530d21
+}
+.GUTTER2 {
+   FONT-SIZE: 11px; COLOR: #ffffff
+}
+.GUTTER3 {
+   FONT-SIZE: 11px; COLOR: #ccccff
+}
+A.BAR {
+   FONT-SIZE: 11px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.HELPBAR {
+   FONT-SIZE: 11px; COLOR: #000000; TEXT-DECORATION: none
+}
+A.GUTTER1 {
+   FONT-WEIGHT: normal; FONT-SIZE: 13px; COLOR: #ffcc66; LINE-HEIGHT: normal; FONT-STYLE: normal; FONT-VARIANT: normal; TEXT-DECORATION: none
+}
+A.GUTTER2 {
+   FONT-SIZE: 11px; COLOR: #ffffff; TEXT-DECORATION: none
+}
+A.SP {
+   FONT-SIZE: 11px; TEXT-DECORATION: none
+}
+A.ND {
+   TEXT-DECORATION: none
+}
+A.H1 {
+   FONT-WEIGHT: bold; FONT-SIZE: 18pt; COLOR: #000000; TEXT-DECORATION: none
+}
+A.H6 {
+   FONT-WEIGHT: bold; FONT-SIZE: 10pt; COLOR: #000000; TEXT-DECORATION: none
+}
+H1 {
+   FONT-WEIGHT: bold; FONT-SIZE: 18px; COLOR: #4C8036
+}
+.H1 {
+   FONT-WEIGHT: bold; FONT-SIZE: 18px
+}
+H2 {
+   FONT-WEIGHT: bold; FONT-SIZE: 16px; text-indent: 20px
+}
+.H2 {
+   FONT-WEIGHT: bold; FONT-SIZE: 16px
+}
+H3 {
+   FONT-WEIGHT: bold; FONT-SIZE: 14px; text-indent: 40px
+}
+.H3 {
+   FONT-WEIGHT: bold; FONT-SIZE: 14px
+}
+H4 {
+   FONT-WEIGHT: bold; FONT-SIZE: 13px
+}
+.H4 {
+   FONT-WEIGHT: bold; FONT-SIZE: 13px
+}
+H5 {
+   FONT-WEIGHT: bold; FONT-SIZE: 11px
+}
+.H5 {
+   FONT-WEIGHT: bold; FONT-SIZE: 11px
+}
+H6 {
+   FONT-WEIGHT: bold; FONT-SIZE: 10px
+}
+.H6 {
+   FONT-WEIGHT: bold; FONT-SIZE: 10px
+}
+
+.MSG {
+       color:#FF3300;
+}
+
+.TITLE {
+   font-size: small;
+   FONT-WEIGHT: bold;
+   color:#003399;
+}
+
+.INDEX {
+   font-size: 13px;
+   FONT-WEIGHT: normal;
+   color:#003399;
+}
+
+.HELP {
+       font-family:'Open Sans',Verdana,Arial,Helvetica,sans-serif;
+}
+
+.SMALLHEAD {
+   font-size:11px;
+   color:#FFFFFF;
+   font-family: 'Open Sans',arial,helvetica,sans-serif;
+   font-weight: bold;
+}
+
+.SMALLTD {
+       font-size:11px;
+   font-family: 'Open Sans',arial,helvetica,sans-serif;
+}
+/* Buttons and text inputs*/
+input {
+       font-family:'Open Sans',Verdana,Arial,Helvetica,sans-serif; font-size: 13px;
+}
+
+TD.footer {
+   FONT-WEIGHT: normal; FONT-SIZE: 11px; COLOR: #999999; TEXT-DECORATION: none
+}
+
+A.footer:link {font-weight:normal;color:#3333cc;text-decoration:none;}
+A.footer:active {font-weight:normal;text-decoration:none;}
+A.footer:visited {font-weight:normal;color:#3333cc;text-decoration:none;}
+A.footer:hover {font-weight:normal;text-decoration:underline;}
+A.newnav:link
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    PADDING-BOTTOM: 5px;
+    COLOR: #ffffff;
+    LINE-HEIGHT: normal;
+    PADDING-TOP: 5px;
+    FONT-STYLE: normal;
+    FONT-FAMILY: 'Open Sans',Verdana, Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: none
+}
+A.newnav:visited
+{
+    FONT-WEIGHT: normal;
+    FONT-SIZE: 10px;
+    PADDING-BOTTOM: 5px;
+    COLOR: #ffffff;
+    LINE-HEIGHT: normal;
+    PADDING-TOP: 5px;
+    FONT-STYLE: normal;
+    FONT-FAMILY: 'Open Sans',Verdana, Arial, Helvetica, sans-serif;
+    TEXT-DECORATION: none
+}
+A.newnav:hover
+{
+    FONT-WEIGHT: bold;
+    FONT-SIZE: 10px;
+    PADDING-BOTTOM: 5px;
+    COLOR: #FFFFFF;
+    LINE-HEIGHT: normal;
+    PADDING-TOP: 5px;
+    FONT-STYLE: normal;
+    FONT-FAMILY: 'Open Sans',Verdana, Arial, Helvetica, sans-serif
+}
+
+tr.tvs_folder_row_header td {
+	background-color: #3A4972;
+	color: #FFFFFF;
+	font-weight: bold;
+}assign_rev_row_blacklisted {
+/*  background-color: #87CEEB; */
+  background-color: #4682B4;
+  color: #000000;
+  font: 10px 'Open Sans',Verdana;
+  height: 21px;
+}
+.assign_rev_row_on_probation {
+  background-color: #87CEFA;
+/*  background-color: #B0C4DE; */
+  color: #000000;
+  font: 10px 'Open Sans',Verdana;
+  height: 21px;
+}
+
+/* AGU SPECIFIC STYLES */
+
+p,font {
+	/* font-family: 'Open Sans', sans-serif !important; */
+	font-size: 11px;
+}
+
+.site_container {
+	padding: 32px 0px 20px 0px;
+	width: 1180px;
+	background: #fff;
+	box-shadow: 0 0 10px #FFFFFF;
+	/* grow height dynamically and expand width from center */
+	margin-left: auto;
+	margin-right: auto;
+	display: table;
+        overflow: auto;
+}
+
+#header {
+	height: 110px;
+	width: 1200px;
+	padding: 10px;
+	margin: auto;
+	background: #006666;
+}
+
+#links {
+	height:40px;
+	width: 100%;
+	background: #4C8036;
+	position: absolute;
+	top: 0;
+	left: 0;
+	margin: 0;
+}
+
+#linkcontents {
+	font-family: 'Open Sans', sans-serif;
+	font-weight: 300;
+	color: #fff;
+	margin-left: auto;
+	margin-right: auto;
+	width: 1200px;
+}
+
+#contents {
+	padding-top: 10px;
+	float: right;
+	height: 93px;
+	width: 300px;
+	vertical-align: middle;
+}
+
+nav#nav-primary {
+	float: right;
+}
+
+nav ul {
+	margin: 0;
+	padding: 0;
+	float: right;
+}
+
+nav li {
+	padding: 0px;
+	display: block;
+	float: left;
+}
+
+nav#nav-secondary {
+	float: right;
+}
+
+nav#nav-primary a, nav#nav-secondary a {
+	height: 20px;
+	padding: 10px 15px 10px 15px;
+	display: block;
+	text-align: center;
+	color: #fff;
+	text-decoration: none;
+	vertical-align: middle;
+	transition: all .25s ease;
+	font-size:13px;
+	border-radius: 7px 7px 0 0;
+}
+
+nav#nav-primary a:hover, nav#nav-secondary a:hover {
+	background: #fff;
+	color: #104B7D;
+}
+
+#journal-title {
+	margin: auto;
+	padding-top: 50px;
+	height: 50px;
+	background: url('/images/eNeuro_logo.jpg') no-repeat;
+}
+
+a, img {
+     border: 0px;
+     outline: 0px;
+ }
+
+li > img {
+    vertical-align: middle;
+}
+
+
+#footer {
+	display: block;
+	height: 90px;
+	width: 1200px;
+	margin-left: auto;
+	margin-right: auto;
+	font-size: 10px;
+	color: #6a6a6a;
+	background: #FFFFF url('/images/bgfooter.png') top center no-repeat;
+	padding: 10px;
+}
+
+#copyright {
+	width: 1000px;
+	margin: auto;
+	padding: 10px;
+	text-align: center;
+	white-space:nowrap;
+}
+
+#footer a{
+	color: #555555;
+}
+
+#ejp {
+	width: 150px;
+	float: right;
+}
+
+#sfn {
+	width: 150px;
+	float: left;
+}
+
+.clear {
+	clear: both;
+}
+
+@media (max-width: 1200px) {
+.container {
+	width: 75%;
+	min-width: 550px;
+}
+
+#header {
+	width: 75%;
+	min-width: 665px;
+}
+
+#linkcontents {
+	width: 100%;
+}
+
+#journal-title {
+	width: 75%;
+	min-width: 675px;
+}
+
+#nav-secondary {
+	display:none;
+}
+
+#footer {
+	width: 75%;
+	min-width: 550px;
+	padding: 20px;
+}
+
+#copyright {
+	width: 75%;
+}
+
+li {
+	font-family: 'Open Sans';
+	font-size: 11px;
+}
+
+sort_span font {
+	font-family: 'Webdings';
+}
+
+}
+
+.contact_rev_type_header_row {
+	background: #000099;
+	color: #ffffff;
+}
+
+.contact_rev_type_label {
+	color: #ffffff;
+}
+
+.contact_rev_secure {
+	color: #ffffff;
+}
+
+.contact_rev_secure_overall {
+    font-weight: bold;
+}
+
+.assign_rev_hidden_input_label_selected {
+    border-style: solid;
+    border-color: #0000FF;
+    width: 25px;
+}
+
+.assign_rev_row_citation_author_odd {
+  background-color: #D3F5D7 !important; /* light green */
+}
+.assign_rev_row_citation_author_even {
+  background-color: #ABD9B1 !important; /* slightly darker green */
+}
+
+.assign_rev_row_odd:hover, .assign_rev_row_even:hover, .assign_rev_row_citation_author_odd:hover, .assign_rev_row_citation_author_even:hover {
+  background-color: #AFAFAF !important;
+}
+
+.assign_rev_secure {
+  FONT-FAMILY: Verdana, sans-serif;
+  FONT-SIZE: 12px;
+  FONT-WEIGHT: bold;
+  COLOR: #000000 !important;
+}
+
+.contact_rev_secure {
+  FONT-FAMILY: Verdana, sans-serif;
+  FONT-SIZE: 12px;
+  FONT-WEIGHT: bold;
+  COLOR: #ffffff !important;
+}
+
+.contact_rev_type_label {
+  font-family: Verdana, sans-serif;
+  font-size: 11px;
+  font-weight: bold;
+  color: #ffffff !important;
+  margin-right: 30px;
+}
+
+.cs_details_comments tr:first-child {
+  background-color: #4c8036;
+  color: white;
+}
+
+.cs_details_participants tr:first-child {
+  background-color: #4c8036;
+  color: white;
+}
+
+/* alert/notification popup */
+#vsubmit-page #alertlayer{
+    top: 25% !important;
+    left: 40% !important;
+}
+
+#vsubmit-page #alertlayer > .label{
+    background: #4C8036 !important;
+}
+
+
+.goto_journals_list_link{
+  color: #FFFFFF;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+.goto_journals_list_link:hover{
+  color: #FFFFFF;
+}
+
+.goto_journals_list_layer {
+  position: absolute;
+  z-Index: 1001;
+  overflow: visible;
+  white-space: nowrap;
+  padding: 0px;
+  border: 2px solid #000000;
+  color: #FFFFFF;
+}
+
+.goto_journal_link{
+  display: block;
+  padding-left: 12px;
+  padding-right: 12px;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  text-decoration: none;
+  text-align: left;
+  color: #003399;
+}
+
+.goto_journal_link:hover{
+  color: #FFFFFF;
+}
+
+textarea#abstract{
+  width:507px;
+  font-size: 9pt !important;
+}
+
+/* VSubmit Alterations */
+#vsubmit-page TABLE.dataset_statement{
+  width:auto !important;
+}
+
+#vsubmit-page TABLE.dataset_statement THEAD > TR.head > TH:last-child{
+  width:auto !important;
+}
+
+#vsubmit-page TABLE.vsubmit_repository_funding_table {
+    width: 20% !important;
+}
+
+/* Removing italics per Janice -JR CT-2017-07-26-89627*/
+#vsubmit-page .msg{
+    margin-bottom: 12px;
+    padding-left: 12px;
+    color: #FF0000;
+    font-weight: bold;
+    font-style: normal !important;
+}
+
+#vsubmit-page .inst{
+    margin-bottom: 2px;
+    font-style: normal !important;
+}
+#vsubmit-page .required-inst{
+    margin-bottom: 2px;
+    font-style: normal !important;
+    font-size: .85em;
+}
+#vsubmit-page .required-inst-red{
+    margin-bottom: 2px;
+    color: #FF0000;
+    font-style: normal !important;
+    font-size: .85em;
+}
+
+#vsubmit-page .nodata {
+    font-style: normal !important;
+}
+
+#vsubmit-page A.action{
+    font-style: normal !important;
+    text-decoration: none;
+}
+
+#vsubmit-page .dualselect .level-label{
+    text-align: left;
+    font-style: normal !important;
+    font-size: .85em;
+}
+#vsubmit-page .dualselect .level-minmax{
+    text-align: right;
+    font-style: normal !important;
+    font-size: .85em;
+}
+
+#vsubmit-page .dualselect .count{
+    text-align: right;
+    font-style: normal !important;
+    font-size: .85em;
+}
+
+#vsubmit-page .dualselect .container > .loading{
+    font-size: .9em;
+    font-style: normal !important;
+}
+
+#vsubmit-page .dualselect .container > .nodata{
+    font-size: .9em;
+    font-style: normal !important;
+}
+
+#vsubmit-page .dualselect .filters .search > .default{
+    color: #A0A0A0;
+    font-style: normal !important;
+}
+
+#vsubmit-page .findperson-results DIV.noresults{
+    font-style: normal !important;
+    margin-bottom: 24px;
+}
+
+#vsubmit-page .usersearch-results .noresults{
+    margin-bottom: 24px;
+    font-style: normal !important;
+}
+
+#vsubmit-page TABLE.user-container + .required-inst{
+    margin-top: -12px;
+    margin-bottom: 12px;
+    font-style: normal !important;
+    font-size: .85em;
+}
+
+#vsubmit-page TABLE.user-container TR.details > TD > DIV.actions > A{
+    padding-right: 6px;
+    font-size: .9em;
+    font-style: normal !important;
+}
+
+#vsubmit-page .qtn TABLE.length-container TD.length{
+    text-align: right;
+    font-style: normal !important;
+}
+
+#vsubmit-page TABLE.input TD > .desc > SPAN{
+    display: block;
+    padding-left: 2px;
+    font-size: .8em;
+    font-style: normal !important;
+    color: #A0A0A0;
+}
+
+#vsubmit-page TABLE.vsubmit_repository_funding_table TD .funder-status-text > A{
+    text-decoration: none;
+    font-style: normal !important;
+    color: #FF0000;
+}
+
+#vsubmit-page .reviewfiles-last-update {
+    font-size: x-small;
+    font-style: normal !important;
+}
+
+#vsubmit-page .files-copy-fwd > .nodata{
+    margin-bottom: 24px;
+    padding-left: 12px;
+    font-style: normal !important;
+}
+
+#vsubmit-page .revfiles-container > TABLE TD .size{
+    padding-left: 4px;
+    font-size: .8em;
+    font-style: normal !important;
+}
+/* end of italics removal */

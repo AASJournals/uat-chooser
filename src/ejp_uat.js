@@ -36,7 +36,7 @@ Uat['urls'] = {};
 Uat.Autocompleter = Class.create(Autocompleter.Base,
 {
 
-    initialize: function($super, key, update, options, baseUrl) {
+    initialize: function($super, key, update, options) {
         // parse options
         if ( !options || options == '' ) {
             options = '{}';
@@ -44,7 +44,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         this.options = JSON.parse( options );
 
         // Initialize options, class variables, etc
-        this.initSettings(key, update, baseUrl);
+        this.initSettings(key, update);
 
         // Initialize the display
         this.initDivContents( key, update, this.options );
@@ -55,7 +55,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         // Do http request to load terms list from url
         ejpUatGetTerms(this.url, this.getTermsXMLFinish );
     },
-    initSettings: function(key, update, baseUrl) {
+    initSettings: function(key, update) {
         // Set initial vars
         if ( !this.options.containerId ) this.options.containerId = key;
         this.options.indicator = key+'_ind';
@@ -122,7 +122,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         }
         if ( !this.options.infoDivAddIcon ) {
             // Info div add icon
-            this.options.infoDivAddIcon = '<img src="images/taxonomyterms_miss.png" alt="Add Term" title="Add Term"/>';
+            this.options.infoDivAddIcon = '<img src="taxonomyterms_miss.png" alt="Add Term" title="Add Term"/>';
         }
     },
     hide: function($super) {
@@ -262,7 +262,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html += '<input type="text" id="'+key+'_input" value="" size="20" maxlength="100">';
 
         // Autocompleter div
-        html += '<span id="' + options.indicator + '" style="display: none"><img src="images/indicator_tiny_red.gif" alt="Working..." /></span>';
+        html += '<span id="' + options.indicator + '" style="display: none"><img src="indicator_tiny_red.gif" alt="Working..." /></span>';
         html += '<div id="' + update +'" class="autocomplete"></div>';
 
         html += '</div>';
@@ -360,7 +360,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html = '<div>';
 
         // Close icon
-        html += '<div class="ejp-uat-clipboard-close" id="'+this.key+'_clipboard_close" action="close"><img src="images/vsubmit_close.png" alt="Close" title="Close"/></div>';
+        html += '<div class="ejp-uat-clipboard-close" id="'+this.key+'_clipboard_close" action="close"><img src="vsubmit_close.png" alt="Close" title="Close"/></div>';
 
         // Contents div
         html += '<div class="ejp-uat-clipboard-contents">'+contents+'</div>';
@@ -458,7 +458,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         var html = '<tr id="'+keywordKey+'_added"><td>';
         html += keyword+externalIdHtml+'<input type="hidden" name="keywords'+nextCnt+'" id="keywords'+nextCnt+'" value="'+keyword+'">';
         html += '</td>';
-        html += '<td><div id="'+keywordKey+'_remove" class="ejp-uat-remove-link" >Remove&nbsp;<img src="/images/vsubmit_status_error.png"></div></td></tr>';
+        html += '<td><div id="'+keywordKey+'_remove" class="ejp-uat-remove-link" >Remove&nbsp;<img src="vsubmit_status_error.png"></div></td></tr>';
 
         $(this.key+'_added_table').down('tr').insert({after:html} );
 
@@ -543,7 +543,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
 
             html += '<li id="'+this.key+'_option_'+choices[i]+'">';
             html += choiceHtml;
-            html += '<div class="ejp-uat-infolink" id="'+this.key+'_info_'+choices[i]+'" ><img src="/images/info_select.png"></div>';
+            html += '<div class="ejp-uat-infolink" id="'+this.key+'_info_'+choices[i]+'" ><img src="info_select.png"></div>';
             html += '</li>';
         }
         html += '</ul>';
@@ -762,7 +762,7 @@ function ejpUatAutocompleterInit( key, opts ) {
     if ( $(acId) ) return;
 
     //create autocompleter obj
-    new Uat.Autocompleter( key, acId, opts, bref+'/'+prog_base );
+    new Uat.Autocompleter( key, acId, opts );
 
     return;
 }
@@ -821,7 +821,7 @@ function ejpUatGetTerms(url, callback, callCnt) {
 }
 
 function ejpUatParseXmlTerms(url, xmlString) {
-    var parse, xmlDoc;
+    var parser, xmlDoc;
     parser = new DOMParser();
 
     xmlDoc = parser.parseFromString(xmlString,"text/xml");
@@ -835,7 +835,7 @@ function ejpUatParseXmlTerms(url, xmlString) {
     for ( var i = 0; i < termNodes.length; i++ ) {
         termNode = termNodes[i];
         aboutLink = termNode.getAttribute('rdf:about');
-        found = aboutLink.match(externalIdRe);
+        var found = aboutLink.match(externalIdRe);
         if ( !found ) continue; // Skip if we can't find externalid
         externalId = found[1];
 
@@ -906,7 +906,7 @@ function ejpUatParseXmlTerms(url, xmlString) {
     Uat['urls'][url]['terms'] = {};
     Uat['urls'][url]['externalIds'] = {};
     Object.keys( terms ).each(function(externalId) {
-        term = terms[externalId];
+        var term = terms[externalId];
         if ( !term.name || term.name == '' || term.name.length < 1 ) {
             return;
         }
