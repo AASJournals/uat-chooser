@@ -122,7 +122,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         }
         if ( !this.options.infoDivAddIcon ) {
             // Info div add icon
-            this.options.infoDivAddIcon = '<img src="taxonomyterms_miss.png" alt="Add Term" title="Add Term"/>';
+            this.options.infoDivAddIcon = '<img src="'+img_taxonomyterms_miss+'" alt="Add Term" title="Add Term"/>';
         }
     },
     hide: function($super) {
@@ -262,7 +262,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html += '<input type="text" id="'+key+'_input" value="" size="20" maxlength="100">';
 
         // Autocompleter div
-        html += '<span id="' + options.indicator + '" style="display: none"><img src="indicator_tiny_red.gif" alt="Working..." /></span>';
+        html += '<span id="' + options.indicator + '" style="display: none"><img src="'+img_indicator_tiny_red+'" alt="Working..." /></span>';
         html += '<div id="' + update +'" class="autocomplete"></div>';
 
         html += '</div>';
@@ -360,7 +360,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html = '<div>';
 
         // Close icon
-        html += '<div class="ejp-uat-clipboard-close" id="'+this.key+'_clipboard_close" action="close"><img src="vsubmit_close.png" alt="Close" title="Close"/></div>';
+        html += '<div class="ejp-uat-clipboard-close" id="'+this.key+'_clipboard_close" action="close"><img src="'+img_vsubmit_close+'" alt="Close" title="Close"/></div>';
 
         // Contents div
         html += '<div class="ejp-uat-clipboard-contents">'+contents+'</div>';
@@ -458,7 +458,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         var html = '<tr id="'+keywordKey+'_added"><td>';
         html += keyword+externalIdHtml+'<input type="hidden" name="keywords'+nextCnt+'" id="keywords'+nextCnt+'" value="'+keyword+'">';
         html += '</td>';
-        html += '<td><div id="'+keywordKey+'_remove" class="ejp-uat-remove-link" >Remove&nbsp;<img src="vsubmit_status_error.png"></div></td></tr>';
+        html += '<td><div id="'+keywordKey+'_remove" class="ejp-uat-remove-link" >Remove&nbsp;<img src="'+img_vsubmit_status_error+'"></div></td></tr>';
 
         $(this.key+'_added_table').down('tr').insert({after:html} );
 
@@ -543,7 +543,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
 
             html += '<li id="'+this.key+'_option_'+choices[i]+'">';
             html += choiceHtml;
-            html += '<div class="ejp-uat-infolink" id="'+this.key+'_info_'+choices[i]+'" ><img src="info_select.png"></div>';
+            html += '<div class="ejp-uat-infolink" id="'+this.key+'_info_'+choices[i]+'" ><img src="'+img_info_select+'"></div>';
             html += '</li>';
         }
         html += '</ul>';
