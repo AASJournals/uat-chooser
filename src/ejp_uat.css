@@ -1,11 +1,10 @@
 /******************************************************************************************/
-/******************************************************************************************/
 /*                                                                                        */
 /* Copyright 2018 Precision Computer Works Inc / eJournalPress                            */
 /*                                                                                        */
 /* ejp_uat.css                                                                            */
 /*                                                                                        */
-/* $Id: ejp_uat.css,v 83.3 2019/01/24 15:18:33 plotkin Exp $                             */
+/* $Id: ejp_uat.css,v 83.3 2019/01/24 15:18:33 plotkin Exp $                              */
 /*                                                                                        */
 /* Permission is hereby granted, free of charge, to any person obtaining a copy of this   */
 /* software and associated documentation files (the "Software"), to deal in the Software  */
@@ -26,95 +25,137 @@
 /*                                                                                        */
 /*                                                                                        */
 /******************************************************************************************/
-/******************************************************************************************/
-
-/****************************************************************/
-/*  ejp_uat page display- wide default/override rules */
-/****************************************************************/
 
 .ejp-uat-added-terms{
-    vertical-align: middle;
-    text-align: center;
-    white-space: nowrap;
-    margin-bottom: 10px;
-    border-collapse: collapse;
+  vertical-align: middle;
+  text-align: center;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  border-collapse: collapse;
 }
 .ejp-uat-added-terms TD, .ejp-uat-added-terms TH{
-    border: 1px solid black;
-    padding: 4px 4px 4px 4px;
+  border: 1px solid black;
+  padding: 4px 4px 4px 4px;
 }
 .ejp-uat-remove-link {
-    cursor: pointer;
+  cursor: pointer;
 }
 .ejp-uat-infolink {
-    display:inline;
-    padding-left: 5px;
+  display:inline;
+  padding-left: 5px;
 }
 .ejp-uat-info{
-    border: 1px solid black;
-    padding: 6px 6px 6px 6px;
-    margin-left:7px;
-    min-height: 200px;
-    min-width: 200px;
+  border: 1px solid black;
+  padding: 6px 6px 6px 6px;
+  margin-left:7px;
+  min-height: 200px;
+  min-width: 200px;
 }
 .ejp-uat-info-title{
-    font-weight:bold;
-    display:inline;
+  font-weight:bold;
+  display:inline;
 }
 .ejp-uat-info-section{
-    margin-bottom:10px;
+  margin-bottom:10px;
 }
 .ejp-uat-added-external-id{
-    padding-left:8px;
-    display:inline;
+  padding-left:8px;
+  display:inline;
 }
 .ejp-uat-autocompleter TD{
-    vertical-align: top;
+  vertical-align: top;
 }
 .ejp-uat-link{
-    display:inline;
-    padding-right:10px;
+  display:inline;
+  padding-right:10px;
 }
 .ejp-uat-links{
-    padding-top:10px;
-    padding-bottom:10px;
+  padding-top:10px;
+  padding-bottom:10px;
 }
 .ejp-uat-autocompleter .autocomplete{
-    max-height: 400px;
-    max-width: 400px;
-    overflow-y: scroll;
-    white-space: normal;
+  max-height: 400px;
+  max-width: 400px;
+  overflow-y: scroll;
+  white-space: normal;
 }
 .ejp-uat-autocompleter .autocomplete UL LI{
-    padding: 4px 6px;
+  padding: 4px 6px;
 }
 .ejp-uat-info-add {
-    display:inline-block;
-    margin-left:7px;
-    cursor:pointer;
-    vertical-align: middle
+  display:inline-block;
+  margin-left:7px;
+  cursor:pointer;
+  vertical-align: middle
 }
 .ejp-uat-info-add IMG{
-    width:13px;
-    height:auto;
+  width:13px;
+  height:auto;
 }
 .ejp-uat-info-term {
-    display:inline-block;
-    vertical-align: middle
+  display:inline-block;
+  vertical-align: middle
 }
 .ejp-uat-clipboard {
-    max-width:400px;
-    position:absolute;
-    border:1px solid black;
-    padding:5px;
-    background-color:white;
-    z-index:200;
+  max-width:400px;
+  position:absolute;
+  border:1px solid black;
+  padding:5px;
+  background-color:white;
+  z-index:200;
 }
 .ejp-uat-clipboard-close {
-    cursor:pointer;
-    float:right;
+  cursor:pointer;
+  float:right;
 }
 .ejp-uat-clipboard-close IMG{
-    width:20px;
-    height:auto;
+  width:20px;
+  height:auto;
+}
+
+/* Autocompleter */
+
+div.autocomplete {
+  position:absolute;
+  width:550px;
+  background-color:#fafafa;
+  border:1px solid #ccc;
+  border-width: 1px 1px 0;
+  margin:0;
+  padding:0;
+  font-family: arial;
+  font-size: 10pt;
+}
+
+div.autocomplete ul {
+  list-style-type:none;
+  margin:0;
+  padding:0;
+}
+
+div.autocomplete ul li.selected {
+  background-color: #4173cc;
+  color:#fff;
+}
+
+div.autocomplete ul li {
+  list-style-type:none;
+  display:block;
+  margin:0px;
+  padding:2px;
+  cursor:pointer;
+  border-bottom:1px solid #ccc;
+}
+
+div.autocomplete ul li .autocomplete_regex {
+  font-weight: bold;
+  background-color: #a1d3ff;
+}
+
+div.autocomplete ul li.selected .autocomplete_regex {
+  background-color: #81B3FF;
+}
+
+div.autocomplete ul li span.autocomplete_extra {
+  font-size: smaller;
 }
