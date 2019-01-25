@@ -248,7 +248,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
     },
     createDivContents: function(key, update, options) {
         var html = '';
-        html += '<table class="ejp-uat-autocompleter" ><tr><td>';
+        html += '<table class="ejp-uat-autocompleter" ><tr><td width="50%">';
 
         // table to hold added terms
         html += '<div id="'+key+'_added_terms" style="display:none">';
@@ -267,13 +267,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
 
         html += '</div>';
 
-        html += '</td><td>';
-
-        // Info div
-        html += '<div class="ejp-uat-info" id="'+key+'_info" style="display:none"></div>';
-        html += '</div>';
-        html += '</td></tr></table>';
-
         // Links div
         html += '<div class="ejp-uat-links" id="'+key+'_links" style="display:none">';
         html += '</div>';
@@ -281,6 +274,13 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         // Cut/Paste Div
         html += '<div class="ejp-uat-clipboard" id="'+key+'_clipboard" style="display:none">';
         html += '</div>';
+
+        html += '</td><td>';
+
+        // Info div
+        html += '<div class="ejp-uat-info" id="'+key+'_info" style="display:none"></div>';
+        html += '</div>';
+        html += '</td></tr></table>';
 
         // Insert the html
         $(options.containerId).update(html);
