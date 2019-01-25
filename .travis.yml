@@ -13,6 +13,10 @@ script:
 
 cache: npm
 
+before_deploy:
+  - rm dist/.gitignore dist/combined.js
+  - ls -l dist # temp debug
+
 deploy:
   provider: pages
   skip-cleanup: true
