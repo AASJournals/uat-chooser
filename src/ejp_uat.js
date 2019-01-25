@@ -28,6 +28,37 @@
 /******************************************************************************************/
 /******************************************************************************************/
 
+// To allow external users to embed the widget, we want to construct image
+// URLs that are relative to the currently executing JS file, not the HTML
+// page. Here we create a function that generates such URLs.
+
+var make_asset_url = (function() {
+    var script_url = null;
+
+    if (typeof document.currentScript == "object") {
+        script_url = document.currentScript.src;
+    } else {
+        // According to The Internet, this codepath should only be triggered
+        // in IE. We assume that the final executing script is called
+        // `uat-chooser.js`
+        var scripts = document.getElementsByTagName('script');
+        var len = scripts.length;
+
+        for (var i = 0; i < len; i++) {
+            if (scripts[i].src.search("uat-chooser.js") > 0) {
+                script_url = scripts[i].src;
+                break;
+            }
+        }
+    }
+
+    function make_asset_url(rel_url) {
+        return new URL(rel_url, script_url).href;
+    }
+
+    return make_asset_url;
+})();
+
 
 // Place holder object
 var Uat = {};
@@ -122,7 +153,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         }
         if ( !this.options.infoDivAddIcon ) {
             // Info div add icon
-            this.options.infoDivAddIcon = '<img src="'+img_taxonomyterms_miss+'" alt="Add Term" title="Add Term"/>';
+            this.options.infoDivAddIcon = '<img src="'+make_asset_url(img_taxonomyterms_miss)+'" alt="Add Term" title="Add Term"/>';
         }
     },
     hide: function($super) {
@@ -262,7 +293,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html += '<input type="text" id="'+key+'_input" value="" size="20" maxlength="100">';
 
         // Autocompleter div
-        html += '<span id="' + options.indicator + '" style="display: none"><img src="'+img_indicator_tiny_red+'" alt="Working..." /></span>';
+        html += '<span id="' + options.indicator + '" style="display: none"><img src="'+make_asset_url(img_indicator_tiny_red)+'" alt="Working..." /></span>';
         html += '<div id="' + update +'" class="autocomplete"></div>';
 
         html += '</div>';
@@ -360,7 +391,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html = '<div>';
 
         // Close icon
-        html += '<div class="ejp-uat-clipboard-close" id="'+this.key+'_clipboard_close" action="close"><img src="'+img_vsubmit_close+'" alt="Close" title="Close"/></div>';
+        html += '<div class="ejp-uat-clipboard-close" id="'+this.key+'_clipboard_close" action="close"><img src="'+make_asset_url(img_vsubmit_close)+'" alt="Close" title="Close"/></div>';
 
         // Contents div
         html += '<div class="ejp-uat-clipboard-contents">'+contents+'</div>';
@@ -458,7 +489,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         var html = '<tr id="'+keywordKey+'_added"><td>';
         html += keyword+externalIdHtml+'<input type="hidden" name="keywords'+nextCnt+'" id="keywords'+nextCnt+'" value="'+keyword+'">';
         html += '</td>';
-        html += '<td><div id="'+keywordKey+'_remove" class="ejp-uat-remove-link" >Remove&nbsp;<img src="'+img_vsubmit_status_error+'"></div></td></tr>';
+        html += '<td><div id="'+keywordKey+'_remove" class="ejp-uat-remove-link" >Remove&nbsp;<img src="'+make_asset_url(img_vsubmit_status_error)+'"></div></td></tr>';
 
         $(this.key+'_added_table').down('tr').insert({after:html} );
 
@@ -543,7 +574,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
 
             html += '<li id="'+this.key+'_option_'+choices[i]+'">';
             html += choiceHtml;
-            html += '<div class="ejp-uat-infolink" id="'+this.key+'_info_'+choices[i]+'" ><img src="'+img_info_select+'"></div>';
+            html += '<div class="ejp-uat-infolink" id="'+this.key+'_info_'+choices[i]+'" ><img src="'+make_asset_url(img_info_select)+'"></div>';
             html += '</li>';
         }
         html += '</ul>';
