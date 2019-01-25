@@ -1,8 +1,22 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <title>Placeholder</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1, IE=edge"/>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Minimal UAT Concept Chooser Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/prototype/1.7.3.0/prototype.js"></script>
   </head>
   <body>
+    <h1>Minimal UAT Concept Chooser Demo</h1>
+
+    <p>Please use the entry box and drop down menu below to auto-complete, search for, and select UAT concepts:</p>
+
+    <div id="uat_widget" class="uat-widget"></div>
+
+    <script src="uat-chooser.js"></script>
+    <script type="text/javascript">
+      uat_chooser.default.ejpUatAutocompleterInit("uat_widget");
+    </script>
   </body>
 </html>
