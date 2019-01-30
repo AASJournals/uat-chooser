@@ -265,7 +265,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html += '<span id="' + options.indicator + '" style="display: none"><img src="'+img_indicator_tiny_red+'" alt="Working..." /></span>';
         html += '<div id="' + update +'" class="autocomplete"></div>';
 
-        html += '</div>';
+        html += '</div><br>';
 
         // Links div
         html += '<div class="ejp-uat-links" id="'+key+'_links" style="display:none">';
