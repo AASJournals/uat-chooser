@@ -296,7 +296,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html += '<span id="' + options.indicator + '" style="display: none"><img src="'+make_asset_url(img_indicator_tiny_red)+'" alt="Working..." /></span>';
         html += '<div id="' + update +'" class="autocomplete"></div>';
 
-        html += '</div>';
+        html += '</div><br>';
 
         // Links div
         html += '<div class="ejp-uat-links" id="'+key+'_links" style="display:none">';
@@ -339,7 +339,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             html = '';
 
             // Build and insert link
-            html += '<div class="ejp-uat-link"><a id="'+id+'" action="'+options.links[i].action+'" >'+options.links[i].label+'</a></div>';
+            html += '<div class="ejp-uat-link"><a href="javascript:void(0);" id="'+id+'" action="'+options.links[i].action+'" >'+options.links[i].label+'</a></div>';
             $(key+'_links').insert(html);
 
             // Add event
@@ -400,7 +400,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         html += '<textarea id="'+this.key+'_clipboard_contents" style="height:0px;width:0px;opacity:0">'+contents+'</textarea>';
 
         // Copy link
-        html += "<div class='ejp-uat-clipboard-copy' ><a id='"+this.key+"_clipboard_copy' action='copy' >Copy to clipboard</a></div>";
+        html += "<div class='ejp-uat-clipboard-copy' ><a href='javascript:void(0);' id='"+this.key+"_clipboard_copy' action='copy' >Copy to clipboard</a></div>";
 
         // End page div
         html += '</div>';
@@ -752,7 +752,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         } else {
             // case for children/parents/related
             linkClass = 'ejp-uat-info-term';
-            contents = '<a>'+term+'</a>';
+            contents = '<a href="javascript:void(0);">'+term+'</a>';
         }
 
         // Build contents
