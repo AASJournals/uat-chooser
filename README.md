@@ -1,10 +1,14 @@
 # uat-chooser
 
 A widget for choosing concepts from the
-[Unified Astronomy Thesaurus](http://astrothesaurus.org/). It currently looks
-like this:
+[Unified Astronomy Thesaurus](http://astrothesaurus.org/) (UAT). It currently
+looks like this:
 
 ![Simple example screenshot](img/screenshot.png)
+
+We host a live version of the widget on the UAT website:
+
+http://astrothesaurus.org/concept-select/
 
 The original code was donated by [eJournalPress](https://ejpress.com/). This
 module is maintained by the [American Astronomical Society](https://aas.org/).
@@ -27,6 +31,17 @@ $ npm run build
 and then copy the contents of the `dist/` directory, minus `index.html`, to
 your web server. Tweak the sample HTML and embed it in your webpage as
 appropriate.
+
+To test the local code in a web browser, you can launch a webserver that
+serves static files from the `dist/` directory. There are
+[many ways to do this](https://gist.github.com/willurd/5720255). We suggest:
+
+```
+$ cd dist
+$ npx httpserver 8000
+```
+
+Then navigate your browser to <http://localhost:8000/>.
 
 **TODO**: show how to extract the list of selected keywords!
 
