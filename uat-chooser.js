@@ -2489,10 +2489,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             // Initialize links to display
             this.options.links = [];
             var link = {};
-            link['action'] = 'latex_popup';
-            link['label'] = 'Cut/Paste Latex';
-            this.options.links.push( link );
-            link = {};
             link['action'] = 'text_popup';
             link['label'] = 'Cut/Paste Text';
             this.options.links.push( link );
@@ -2712,12 +2708,11 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         var action = linkElement.getAttribute('action');
         if ( action == 'text_popup' ) {
             this.getClipboardPopup( this.getTextTerms(), 'text' );
-        } else if ( action == 'latex_popup' ) {
-            this.getClipboardPopup( this.getLatexTerms(), 'latex' );
         }
 
         return;
     },
+
     getTextTerms: function() {
         var terms = this.getAddedTerms();
         var html = '';
@@ -2731,20 +2726,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         }
         return html;
     },
-    getLatexTerms: function() {
-        var terms = this.getAddedTerms();
-        var html = '';
-        for ( var i = 0; i < terms.length; i++ ) {
-            if ( i > 0 ) html += ", ";
-            html += terms[i];
-            var externalId = this.getTermInfo( terms[i] ).externalId;
-            if ( externalId ) {
-                html += " ("+externalId+")";
-            }
-        }
-        html = '\\keywords{'+html+'}';
-        return html;
-    },
+
     getClipboardPopup: function(contents, type) {
         // Page Div
         html = '<div>';
