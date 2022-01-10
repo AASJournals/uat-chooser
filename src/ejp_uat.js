@@ -848,6 +848,7 @@ function ejpUatParseXmlTerms(url, xmlString) {
     for ( var i = 0; i < termNodes.length; i++ ) {
         termNode = termNodes[i];
         aboutLink = termNode.getAttribute('rdf:about');
+        if ( !aboutLink ) continue; // KF - skip if we cant found aboutLink
         var found = aboutLink.match(externalIdRe);
         if ( !found ) continue; // Skip if we can't find externalid
         externalId = found[1];
@@ -867,48 +868,59 @@ function ejpUatParseXmlTerms(url, xmlString) {
         // Init this in the terms list
         for ( var j = 0; j < termNode.childNodes.length; j++ ) {
             tagName = termNode.childNodes[j].tagName;
-            if ( tagName == 'prefLabel' ) {
+
+            if ( !tagName ) continue; // KF - skip if we can't find tagName
+            if (tagName.includes('prefLabel')) {  // KF
+            //if ( tagName == 'prefLabel' ) {
                 // Label for this term
                 terms[externalId]['name'] = termNode.childNodes[j].textContent;
-            } else if ( tagName == 'broader' ) {
 
+            } else if (tagName.includes('broader')) { // KF
+            //} else if ( tagName == 'broader' ) {
                 aboutLink = termNode.childNodes[j].getAttribute('rdf:resource');
+                if ( !aboutLink ) continue; // KF - skip if we cant found aboutLink
                 found = aboutLink.match(externalIdRe);
-                if ( !found ) continue; // Skip if we can't find externalid
+                if ( !found ) continue; // KF - skip if we can't find found
                 tempId = found[1];
-
                 // Add parent
                 terms[externalId]['parents'][tempId] = 1;
 
-            } else if ( tagName == 'narrower' ) {
+            } else if (tagName.includes('narrower')) { // KF
+            //} else if ( tagName == 'narrower' ) {
 
                 aboutLink = termNode.childNodes[j].getAttribute('rdf:resource');
+                if ( !aboutLink ) continue; // KF - skip if we cant found aboutLink
                 found = aboutLink.match(externalIdRe);
-                if ( !found ) continue; // Skip if we can't find externalid
+                if ( !found ) continue; // KF - skip if we can't find found
                 tempId = found[1];
 
                 // Add child
                 terms[externalId]['children'][tempId] = 1;
 
-            } else if ( tagName == 'related' ) {
+            } else if (tagName.includes('related')) { // KF
+            //} else if ( tagName == 'related' ) {
 
                 aboutLink = termNode.childNodes[j].getAttribute('rdf:resource');
+                if ( !aboutLink ) continue; // KF - skip if we cant found aboutLink
                 found = aboutLink.match(externalIdRe);
-                if ( !found ) continue; // Skip if we can't find externalid
+                if ( !found ) continue; // KF - skip if we can't find found
                 tempId = found[1];
 
                 // Add to list of related terms
                 terms[externalId]['related'][tempId] = 1;
 
-            } else if ( tagName == 'definition' ) {
+            } else if (tagName.includes('definition')) { // KF
+            //} else if ( tagName == 'definition' ) {
                 // Add definition
                 terms[externalId]['definitions'].push(termNode.childNodes[j].textContent);
 
-            } else if ( tagName == 'scopeNote' ) {
+            } else if (tagName.includes('scopeNote')) { // KF
+            //} else if ( tagName == 'scopeNote' ) {
                 // Add scope note
                 terms[externalId]['scopeNotes'].push(termNode.childNodes[j].textContent);
 
-            } else if ( tagName == 'altLabel' ) {
+            } else if (tagName.includes('altLabel')) { // KF
+            //} else if ( tagName == 'altLabel' ) {
                 // Add altLabel
                 terms[externalId]['altLabels'].push(termNode.childNodes[j].textContent);
             }
