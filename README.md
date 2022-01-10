@@ -37,14 +37,41 @@ serves static files from the `dist/` directory. There are
 [many ways to do this](https://gist.github.com/willurd/5720255). We suggest:
 
 ```
-$ cd dist
-$ npx httpserver 8000
+$ npx http-server -p 8000 dist
 ```
 
 Then navigate your browser to <http://localhost:8000/>.
 
 **TODO**: show how to extract the list of selected keywords!
 
+
+## Deployment
+
+AAS hosts a static deployment of the chooser at:
+
+#### https://aasjournals.github.io/uat-chooser/
+
+This static deployment is hosted through [GitHub Pages][ghpages] from the
+`gh-pages` branch of this repo.
+
+[ghpages]: https://pages.github.com/
+
+We should really automate deployment on merges to master, and we used to do so,
+but the automation was based on Travis CI which is now basically nonfunctional.
+To deploy manually:
+
+```sh
+$ git clean -fxd
+$ npm install
+$ npm run build
+$ git switch gh-pages
+$ rm -rf node_modules dist/.gitignore dist/combined.js *.png *.gif *.js
+$ mv dist/* .
+$ git add .
+$ git ci -m "Deploy updates"
+$ git push
+$ git switch master
+```
 
 ## Technical details
 
