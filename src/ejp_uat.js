@@ -533,6 +533,10 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
                         break;
                     }
                 }
+                if ( !match && termInfo.externalId.match(re) ) {
+                    // TT 26911: Check against external id #
+                    match = true;
+               }
             }
             if ( match ) {
                 choices.push(choice);
