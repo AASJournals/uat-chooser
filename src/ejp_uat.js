@@ -211,8 +211,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
     },
     updateElement: function (selectedElement) {
         // Overrides control.js updateElement, see also ejp.js updateElement
-        var value = '';
-        value = Element.collectTextNodesIgnoreClass(selectedElement, 'informal');
+        var value = Element.collectTextNodesIgnoreClass(selectedElement, 'informal');
         this.element.focus();
         this.hasFocus = true;
         var externalId = '';
@@ -235,8 +234,7 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             return Uat['urls'][this.url]['terms'];
         } else {
             // No terms yet loaded
-            var terms = {};
-            return terms;
+            return {};
         }
     },
     getTermFromExternalId: function(externalId) {
@@ -322,7 +320,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
 
         // Create links
         this.createLinks( key, options );
-        return;
     },
     createLinks: function(key, options ) {
         // Create links at bottom of widget
@@ -342,7 +339,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             $(id).addEventListener('click', function(e){linkClickFunc(this);}, false);
         }
 
-        return;
     },
     linkClick: function(linkElement) {
         // Handler when links at bottom of widget are clicked
@@ -351,7 +347,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             this.getClipboardPopup( this.getTextTerms(), 'text' );
         }
 
-        return;
     },
 
     getTextTerms: function() {
@@ -398,7 +393,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         // Show the div
         $(this.key+'_clipboard').show();
 
-        return;
     },
     clipboardClick: function(linkElement) {
         var action = linkElement.getAttribute('action');
@@ -412,11 +406,9 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             this.clipboardHide();
         }
 
-        return;
     },
     clipboardHide: function() {
         $(this.key+'_clipboard').hide();
-        return;
     },
     getAddedTerms: function() {
         // Returns array of added terms
@@ -478,7 +470,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         var removeFunc = this.termRemove.bind(null, this.key, keywordKey);
         $(keywordKey+'_remove').addEventListener('click', function(e){ removeFunc(); }, false);
 
-        return;
     },
 
     termRemove: function( key, keywordKey ) {
@@ -493,7 +484,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             $(key+'_added_terms').hide();
             $(key+'_links').hide();
         }
-        return;
     },
 
     getUpdatedChoices: function($super) {
@@ -509,41 +499,44 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         }
 
         if (update) {
-            this.updateChoices(this.filterChoices(this.getToken()));
-            return;
+            this.updateChoices(this.filterChoices());
         }
     },
-    filterChoices: function(token) {
-        // Filters list of choices based on search text
-        var choices = [];
-        var re;
-        re = new RegExp(ejpUatEscapeRegex( token ), 'i');
-        terms = Object.keys(this.getTerms());
-        for ( var j = 0; j < terms.length; j++ ) {
+    filterChoices: function() {
+        var token = this.getToken();
+        var re = new RegExp(ejpUatEscapeRegex(token), 'i');
+        var terms = Object.keys(this.getTerms());
+        var ranked = [];
+
+        for (var j = 0; j < terms.length; j++) {
             var choice = terms[j];
-            var match = false;
-            if ( choice.match(re) ) {
-                match = true;
-            } else {
-                var termInfo = this.getTermInfo(choice);
-                // Also search alternate labels
-                for ( var i = 0; i < termInfo.altLabels.length; i++ ) {
-                    if ( termInfo.altLabels[i].match(re) ) {
-                        match = true;
-                        break;
-                    }
-                }
-                if ( !match && termInfo.externalId.match(re) ) {
-                    // TT 26911: Check against external id #
-                    match = true;
-               }
+            var termInfo = this.getTermInfo(choice);
+            var rank = null;
+
+            if (choice.toLowerCase() === token.toLowerCase()) {
+                rank = 0; // exact match
+            } else if (choice.toLowerCase().startsWith(token.toLowerCase())) {
+                rank = 1; // prefix match
+            } else if (choice.match(re)) {
+                rank = 2; // substring match
+            } else if (termInfo.altLabels.some(l => l.toLowerCase().includes(token.toLowerCase()))) {
+                rank = 3; // altLabel match
+            } else if (termInfo.externalId && termInfo.externalId.toLowerCase().includes(token.toLowerCase())) {
+                rank = 4; // externalId match
             }
-            if ( match ) {
-                choices.push(choice);
+
+            if (rank !== null) {
+                ranked.push({choice, rank});
             }
         }
-        choices.sort();
-        return choices;
+
+        // Sort by rank, then alphabetically within rank
+        ranked.sort(function(a, b) {
+            if (a.rank !== b.rank) return a.rank - b.rank;
+            return a.choice.localeCompare(b.choice);
+        });
+
+        return ranked.map(r => r.choice);
     },
 
     updateChoices: function($super, choices) {
@@ -612,7 +605,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         this.element.focus();
         this.hasFocus = true;
 
-        return;
     },
     infoDivPopulate: function (term) {
         // Build and show div contents
@@ -621,14 +613,14 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             this.buildInfoDiv(termInfo);
             $(this.key+'_info').show();
         }
-        return;
     },
     buildInfoDiv: function (termInfo) {
         var html = '';
-        var javscript = '';
         var sectionKey;
         var clickIds = [];
 
+        var text = ejpUatEscapeRegex( this.getToken() );
+        var searchRegex = new RegExp('(' + text + ')', 'ig');
         // Top row listing this term
         for ( var j = 0; j < this.options.infoDivSections.length; j++ ) {
             sectionKey = this.options.infoDivSections[j];
@@ -673,8 +665,10 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
                     html += '<div class="ejp-uat-info-title">Alternate Terms:</div>';
                     // Iterate in the order loaded by XML
                     for (var i = 0; i < termInfo.altLabels.length; i++ ) {
+                        // Highlight the search string in the term
+                        var altLabelHtml = termInfo.altLabels[i].replace(searchRegex, '<span class="autocomplete_regex">$1</span>');
                         html += '<div class="ejp-uat-info-item">';
-                        html += '<div class="ejp-uat-info-term">'+termInfo.altLabels[i]+'</div>';
+                        html += '<div class="ejp-uat-info-term">' + altLabelHtml + '</div>';
                         html += '</div>';
                     }
                 }
@@ -726,7 +720,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
         for (var i = 0; i<clickIds.length; i++ ) {
             $(clickIds[i]).addEventListener('click', function(e){ termClickFunc(this); }, false);
         }
-        return;
     },
     buildInfoDivLink: function(term, sectionKey, clickIds, type){
         var html, id, linkClass, contents;
@@ -767,8 +760,6 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
             $(this.key+'_input').value = term;
             this.tokenBounds = null; // Re-compute token bounds
         }
-
-        return;
     }
 });
 
@@ -781,7 +772,6 @@ function ejpUatAutocompleterInit( key, opts ) {
     //create autocompleter obj
     new Uat.Autocompleter( key, acId, opts );
 
-    return;
 }
 
 function ejpUatGetTerms(url, callback, callCnt) {
@@ -809,9 +799,8 @@ function ejpUatGetTerms(url, callback, callCnt) {
                 callback( url, responseText );
 
             } else {
-                Uat['urls'][url]['status'] == 'failed';
+                Uat['urls'][url]['status'] = 'failed';
                 alert('Unable to load terms');
-                return;
             }
         });
 
@@ -833,8 +822,6 @@ function ejpUatGetTerms(url, callback, callCnt) {
     } else {
         console.log('Unknown state: '+Uat['urls'][url]['status']);
     }
-
-    return;
 }
 
 function ejpUatParseXmlTerms(url, xmlString) {
@@ -846,7 +833,7 @@ function ejpUatParseXmlTerms(url, xmlString) {
     var terms = {};
 
     var termNodes = xmlDoc.getElementsByTagName("rdf:Description");
-    var termId, termNode, termName, aboutLink, externalIdRe, externalId, tagName, tempId;
+    var termNode, aboutLink, externalIdRe, externalId, tagName, tempId;
     externalIdRe = new RegExp( '.+\/(\\d+)$' ); // Links in format "http://astrothesaurus.org/uat/1266"
 
     for ( var i = 0; i < termNodes.length; i++ ) {

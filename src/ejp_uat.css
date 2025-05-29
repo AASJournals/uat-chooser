@@ -116,6 +116,11 @@
   vertical-align: middle
 }
 
+.uat-widget .ejp-uat-info-term .autocomplete_regex {
+  font-weight: bold;
+  background-color: #a1d3ff;
+}
+
 .uat-widget .ejp-uat-clipboard {
   max-width: 400px;
   position: absolute;
