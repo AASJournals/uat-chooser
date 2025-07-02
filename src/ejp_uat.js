@@ -31,6 +31,7 @@
 // To allow external users to embed the widget, we want to construct image
 // URLs that are relative to the currently executing JS file, not the HTML
 // page. Here we create a function that generates such URLs.
+const pluralize = require('pluralize');
 
 var make_asset_url = (function() {
     var script_url = null;
@@ -517,12 +518,18 @@ Uat.Autocompleter = Class.create(Autocompleter.Base,
                 rank = 0; // exact match
             } else if (choice.toLowerCase().startsWith(token.toLowerCase())) {
                 rank = 1; // prefix match
+            } else if (choice.toLowerCase().includes(token.toLowerCase())) {
+                rank = 2; // contains substring match
+            } else if (normalizeTerm(choice).includes(normalizeTerm(token))) {
+                rank = 3; // normalized substring match
             } else if (choice.match(re)) {
-                rank = 2; // substring match
+                rank = 4; // substring match
             } else if (termInfo.altLabels.some(l => l.toLowerCase().includes(token.toLowerCase()))) {
-                rank = 3; // altLabel match
+                rank = 5; // altLabel match
+            } else if (termInfo.altLabels.some(l => normalizeTerm(l).includes(normalizeTerm(token)))) {
+                rank = 6; // altLabel normalized substring match
             } else if (termInfo.externalId && termInfo.externalId.toLowerCase().includes(token.toLowerCase())) {
-                rank = 4; // externalId match
+                rank = 7; // externalId match
             }
 
             if (rank !== null) {
@@ -987,4 +994,12 @@ function ejpUatHttpGetAsync( url, callback ) {
 }
 function ejpUatEscapeRegex(string) {
     return string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // $& means the whole matched string
+}
+
+function normalizeTerm(str) {
+    return pluralize.singular(str // Singularize the term
+        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove accents
+        .replace(/[\s\-_'"/.,!?;:()“”"’‘]/g, '')         // Remove common punctuation
+        .toLowerCase()
+        .trim());
 }
